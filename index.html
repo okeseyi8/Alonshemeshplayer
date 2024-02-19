@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,8 +19,14 @@
         <div class="play_btn">
           <button class="main_play" id="play">
             <i id="play-icon" class="fa fa-play-circle" aria-hidden="true"></i>
-            <audio id="audio" src="https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio" autoplay>
+            <!-- <audio id="audio" src="https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio" autoplay="true" muted="muted">
 
+            </audio> -->
+            <iframe src="silence.mp3" allow="autoplay"  style="display: none">
+              
+            </iframe>
+            <audio id="audio" autoplay loop>
+              <source src="https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio">
             </audio>
           </button>
           <!-- <i class=""></i> -->
@@ -38,20 +43,8 @@
           <!-- <i class="fa-solid fa-volume-xmark"></i> -->
         </div>
         <!-- volume up and down -->
-        <div class="fb_like">
-          <div class="counter" style="border-bottom: solid 2px">
-            <p id="counterText" style="text-align: center">123</p>
-          </div>
-          <div
-            class="like button"
-            style="display: flex; justify-content: center; align-items: center;"
-          >
-           
-            <p style="margin-top: 5px; font-size: 8px;">YOUR CODE GOES HERE</p>
-            
-          </div>
-          
-        </div>
+        <div class="fb-like" data-href="http://fm1.co.il/glgltz.html" data-width="" data-layout="box_count" data-action="" data-size="large" data-share="false"></div>
+
         <div class="favorites" style="margin: 0 0 0 10%">
           <button id="like_button" class="like_button">
             <i id='like_icon' class="fa-regular fa-heart" aria-hidden="true"></i>
@@ -61,9 +54,11 @@
 
       <div class="second_col">
         
+        
         <div class="name_section">
-          <div class="play_main_title">Israel fm</div>
-          <div class="play_title">109.7fm</div>
+         
+          <div class="play_title" style="direction: rtl">רדיו ללא הפסקה</div>
+          <div class="play_title" style="direction: rtl">מנגן עכשיו</div>
         </div>
         <div class="img">
           <img
@@ -74,9 +69,13 @@
             width="100px"
             height="100px"
           />
+          <div id="fb-root"></div>
+
+
         </div>
       </div>
     </div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=1526367464317090" nonce="HZ9nULk9"></script>
 
     <script>
      const playButton = document.getElementById("play");
@@ -94,15 +93,39 @@ let isMute = false;
 let isLiked = false;
 let counterValue = 0;
 
- // Variable to store the Audio object
+// Variable to store the Audio object
 // like_button.addEventListener("click", () =>{
-
+  
 // })
 
 
 
   
 
+window.onload = function(){
+  
+  play_icon.classList.replace("fa-play-circle", "fa-circle-pause");
+  if(audio){
+    audio.play();
+  }
+  
+  main_speaker.addEventListener("click", () =>{
+    isMute = !isMute;
+    
+    if(isMute && audio){
+      audio.volume = 0;
+      speaker_icon.classList.replace("fa-volume-high", "fa-volume-mute");
+      muteBar();
+    }else if(!isMute && audio){
+      audio.volume = 1;
+      speaker_icon.classList.replace("fa-volume-mute", "fa-volume-high");
+      loudBar();
+    }
+  
+  })
+  if (speaker_icon.classList.contains('fa-volume-mute')) {
+    audio.volume = 0;
+  }
 function playFunc(){
   playButton.addEventListener("click", () => {
     isPlaying = !isPlaying;
@@ -136,25 +159,6 @@ function loudBar() {
 }
 // loudBar();
 // muteBar();
-window.onload = function(){
-  play_icon.classList.replace("fa-play-circle", "fa-circle-pause");
-  main_speaker.addEventListener("click", () =>{
-    isMute = !isMute;
-    
-    if(isMute && audio){
-      audio.volume = 0;
-      speaker_icon.classList.replace("fa-volume-high", "fa-volume-mute");
-      muteBar();
-    }else if(!isMute && audio){
-      audio.volume = 1;
-      speaker_icon.classList.replace("fa-volume-mute", "fa-volume-high");
-      loudBar();
-    }
-  
-  })
-  if (speaker_icon.classList.contains('fa-volume-mute')) {
-    audio.volume = 0;
-  }
 
   counterText.textContent = counterValue;
   like_button.addEventListener("click", () =>{
@@ -182,13 +186,16 @@ window.onload = function(){
     </script>
   </body>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
-    * {
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,200&family=Roboto:wght@300&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+    
+    *{
       margin: 0;
       padding: 0;
       position: relative;
-      font-family: poppins;
+      font-family: Rubik;
     }
+  
     .fb_like {
       
       border: 2px solid black;
@@ -199,7 +206,9 @@ window.onload = function(){
     #play-icon {
       transition: all 0.3s ease;
     }
-
+    p{
+      direction: rtl;
+    }
     .bar {
       background-color: rgb(115, 138, 158);
       position: relative;
@@ -229,7 +238,7 @@ window.onload = function(){
       padding-left: 10px;
       padding-top: 10px;
       padding-bottom: 10px;
-
+      border-top: solid 3px black;
       overflow: hidden;
       justify-content: space-between;
       align-items: center;
@@ -250,13 +259,17 @@ window.onload = function(){
       width: 40%;
       display: flex;
       margin-left: 10%;
-      margin-right: 10%;
+      
       align-items: center;
       /* justify-content:; */
     }
     @media only screen and (max-width: 768px) {
     .play_speaker{
         display: none;
+    }
+    
+    .play_title{
+      display: none;
     }
     .fb_like{
         margin-left: 30px;
