@@ -25,7 +25,7 @@
             <iframe src="silence.mp3" allow="autoplay"  style="display: none">
               
             </iframe>
-            <audio id="audio" autoplay loop>
+            <audio id="audio">
               <source src="https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio">
             </audio>
           </button>
@@ -100,14 +100,12 @@ let counterValue = 0;
 
 
 
-  
+
 
 window.onload = function(){
   
-  play_icon.classList.replace("fa-play-circle", "fa-circle-pause");
-  if(audio){
-    audio.play();
-  }
+  // play_icon.classList.replace("fa-play-circle", "fa-circle-pause");
+  // playButton.click(playFunc);
   
   main_speaker.addEventListener("click", () =>{
     isMute = !isMute;
@@ -196,12 +194,7 @@ function loudBar() {
       font-family: Rubik;
     }
   
-    .fb_like {
-      
-      border: 2px solid black;
-      width: 20rem;
-      height: 3em;
-    }
+    
    
     #play-icon {
       transition: all 0.3s ease;
