@@ -7,7 +7,7 @@
      const speaker_icon = document.getElementById("speaker-icon");
      const like_button = document.getElementById("like_button");
      const audio = document.getElementById("audio");
-     const like_icon = document.getElementById("like_icon")
+     const like_icon = document.getElementById("like_icon");
      const bar_fill = document.getElementById("bar_fill");
      const bar_dot = document.getElementById("bar_dot");
 let play_icon = document.getElementById("play-icon");
@@ -81,20 +81,19 @@ function loudBar() {
 // loudBar();
 // muteBar();
 
-  counterText.textContent = counterValue;
-  like_button.addEventListener("click", () =>{
+like_button.addEventListener("click", () =>{
   isLiked = !isLiked;
   if(isLiked){
     like_icon.classList.replace("fa-regular", "fa-solid")
-    counterValue++
-    counterText.textContent = counterValue;
+    
+    
     document.cookie = "likedStation=Israel fm; expires=Thu, 01 Jan 2025 00:00:00 UTC; path=/";
 
     console.log(counterValue)
   }else{
     like_icon.classList.replace("fa-solid", "fa-regular")
-    counterValue--
-    counterText.textContent = counterValue;
+    
+    
     document.cookie = "likedStation=; expires=Thu, 01 Jan 2025 00:00:00 UTC; path=/";
 
 
