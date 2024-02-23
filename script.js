@@ -8,23 +8,21 @@
      const like_button = document.getElementById("like_button");
      const audio = document.getElementById("audio");
      const like_icon = document.getElementById("like_icon");
-     const bar_fill = document.getElementById("bar_fill");
-     const bar_dot = document.getElementById("bar_dot");
+    //  const bar_fill = document.getElementById("bar_fill");
+    //  const bar_dot = document.getElementById("bar_dot");
 let play_icon = document.getElementById("play-icon");
 let isPlaying = false;
 let isMute = false;
 let isLiked = false;
 let counterValue = 0;
+// Get the volume control elements
 
-// Variable to store the Audio object
-// like_button.addEventListener("click", () =>{
-  
-// })
+let seekBar = document.getElementById("seekBar");
 
-
-
-
-
+function seek() {
+  audio.volume = seekBar.value / 100;
+ 
+ }
 window.onload = function(){
   
   // play_icon.classList.replace("fa-play-circle", "fa-circle-pause");

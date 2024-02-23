@@ -21,15 +21,13 @@
         <div class="play_btn">
           <button class="main_play" id="play">
             <i id="play-icon" class="fa fa-play-circle" aria-hidden="true"></i>
-            <!-- <audio id="audio" src="https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio" autoplay="true" muted="muted">
-
-            </audio> -->
+            
             <iframe src="silent.mp3" allow="autoplay"  style="display: none">
               
             </iframe>
-            <audio id="audio">
+            <!-- <audio id="audio">
               <source src="https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio">
-            </audio>
+            </audio> -->
           </button>
           <!-- <i class=""></i> -->
         </div>
@@ -37,10 +35,11 @@
           <button id= "main_speaker" class="main_speaker">
             <i id="speaker-icon" class="fa fa-volume-high"></i>
           </button>
-          <div class="bar">
-            <div id="bar_dot" class="bar_dot"></div>
-            <div id="bar_fill" class="bar_fill"></div>
-          </div>
+          <audio id="audio">
+            <source src="https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio">
+          </audio>
+          <input type="range" id="seekBar" value="0" step="1" onchange="seek()">
+          
 
           <!-- <i class="fa-solid fa-volume-xmark"></i> -->
         </div>
@@ -78,6 +77,7 @@
       </div>
     </div>
     <script src="script.js"></script>
+    
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=1526367464317090" nonce="HZ9nULk9"></script>
     
 

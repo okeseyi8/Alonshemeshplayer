@@ -16,30 +16,8 @@
     p{
       direction: rtl;
     }
-    .bar {
-      background-color: rgb(115, 138, 158);
-      position: relative;
-      width: 70%;
-      height: 0.2rem;
-      margin-left: 10px;
-    }
-    .bar_fill{
-      width:70px;
-      height: 0.2rem;
-      background-color: green;
-      z-index: 1;
-    }
-    .bar_dot {
-      width: 10px;
-      height: 10px;
-      background-color: black;
-      border-radius: 50%;
-      position: absolute;
-      top: -3px;
-      transform: translateX(700%);
-      z-index:100;
-      cursor: pointer;
-    }
+    
+    
     .player_container {
       display: flex;
       padding-left: 10px;
