@@ -9,20 +9,28 @@ let isPlaying = false;
 let isMute = false;
 let isLiked = false;
 let seekBar = document.getElementById("seekBar");
-
+let lastVolume = 1;
 seekBar.addEventListener("input", () =>{
+  // isMute = !isMute;
+  // console.log(isMute)
+
   const volume = parseFloat(seekBar.value) / 100;
   audio.volume = volume;
   if (volume === 0){
+    isMute = true
     speaker_icon.classList.replace("fa-volume-high", "fa-volume-mute");
 
   }else{
+    isMute = false;
+    lastVolume = volume;
+    console.log(lastVolume);
     speaker_icon.classList.replace("fa-volume-mute", "fa-volume-high");
   }
   
  })
 speaker_icon.addEventListener("click", () =>{
   isMute = !isMute;
+  
   console.log(isMute);
   if(isMute){
     speaker_icon.classList.replace("fa-volume-high", "fa-volume-mute");
@@ -30,9 +38,9 @@ speaker_icon.addEventListener("click", () =>{
     audio.volume = 0;
 
 
-  }else{
-    seekBar.value = 100;
-    audio.volume = 1;
+  }else if(!isMute){
+    seekBar.value = lastVolume * 100;
+    audio.volume = lastVolume;
     speaker_icon.classList.replace("fa-volume-mute", "fa-volume-high");
 
   }
