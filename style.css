@@ -16,7 +16,13 @@
     p{
       direction: rtl;
     }
-    
+    .top_container{
+      width: 100vw;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     #seekBar{
       outline: 0;
       cursor: pointer;
